@@ -1,0 +1,5 @@
+plotly
+pandas
+python
+Flask
+gunicorn
