@@ -11,14 +11,14 @@ st.set_page_config(
     page_title="Expense Tracker",
     page_icon="💰",
     layout="wide"
+)
+
 # Initialize the expense tracker
 @st.cache_resource
 def get_tracker():
     return ExpenseTracker()
 
 tracker = get_tracker()
-
-)
 
 # Title and description
 st.title("💰 Personal Expense Tracker")
