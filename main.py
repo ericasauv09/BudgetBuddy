@@ -6,7 +6,11 @@ from visualizations import (
     create_budget_gauge,
     create_daily_expenses_line
 )
-
+# Page configuration
+st.set_page_config(
+    page_title="Expense Tracker",
+    page_icon="💰",
+    layout="wide"
 # Initialize the expense tracker
 @st.cache_resource
 def get_tracker():
@@ -14,11 +18,6 @@ def get_tracker():
 
 tracker = get_tracker()
 
-# Page configuration
-st.set_page_config(
-    page_title="Expense Tracker",
-    page_icon="💰",
-    layout="wide"
 )
 
 # Title and description
