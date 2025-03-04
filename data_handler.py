@@ -42,7 +42,7 @@ class ExpenseTracker:
 
     def get_monthly_expenses(self):
         #ensure 'date' is in the datetime format
-        self.expense_df["date"] = pd.to_datetime(self.expenses_df["date"], errors="coerce")
+        self.expenses_df["date"] = pd.to_datetime(self.expenses_df["date"], errors="coerce")
         #get current month and year
         current_month = datetime.now().month
         current_year = datetime.now().year
