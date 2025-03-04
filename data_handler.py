@@ -41,6 +41,9 @@ class ExpenseTracker:
         self.expenses_df.to_csv(self.data_file, index=False)
 
     def get_monthly_expenses(self):
+        #ensure 'date' is in the datetime format
+        self.expense_df["date"] = pd.to_datetime(self.expenses_df["date"], errors="coerce")
+        #get current month and year
         current_month = datetime.now().month
         current_year = datetime.now().year
         monthly_data = self.expenses_df[
