@@ -3,6 +3,8 @@ import plotly.graph_objects as go
 import pandas as pd
 
 def create_category_pie_chart(category_totals):
+    if not isinstance(category_totals, pd.Series):
+        raise ValueError("category_totals must be a Pandas Series")
     fig = px.pie(
         values=category_totals.values,
         names=category_totals.index,
@@ -13,6 +15,8 @@ def create_category_pie_chart(category_totals):
     return fig
 
 def create_budget_gauge(percentage_used):
+    if not isinstance(percentage_used, (int, float)):
+        raise ValueError("percentage_used must be a numeric value")
     fig = go.Figure(go.Indicator(
         mode="gauge+number",
         value=percentage_used,
@@ -36,6 +40,8 @@ def create_budget_gauge(percentage_used):
     return fig
 
 def create_daily_expenses_line(expenses_df):
+    if not isinstance(expenses_df, pd.DataFrame):
+        raise ValueError("expenses_df must be a Pandas DataFrame")
     daily_expenses = expenses_df.groupby('date')['amount'].sum().reset_index()
     fig = px.line(
         daily_expenses,
@@ -44,3 +50,4 @@ def create_daily_expenses_line(expenses_df):
         title='Daily Expenses Trend',
         labels={'amount': 'Amount ($)', 'date': 'Date'}
     )
+    return fig
